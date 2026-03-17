@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Constructivism - Learning Theories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent-primary: #2E7D32;
+            --accent-dark: #1B5E20;
+            --accent-medium: #558B2F;
+            --accent-light: #F1F8E9;
+            --text-primary: #2C2C2C;
+            --text-secondary: #666666;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FAFAFA;
+            --border-color: #E8E8E8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        /* Sticky Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-sep {
+            margin: 0 0.5rem;
+        }
+
+        .nav-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--bg-secondary);
+            margin-top: 0.75rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-primary);
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        /* Table of Contents */
+        .toc-sidebar {
+            position: sticky;
+            top: 120px;
+            width: 260px;
+            height: fit-content;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .toc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 0.4rem 0 0.4rem 0.75rem;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: var(--text-primary);
+            border-left-color: var(--border-color);
+        }
+
+        .toc-list a.active {
+            color: var(--accent-primary);
+            border-left-color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .content-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-primary);
+            margin-bottom: 2.5rem;
+        }
+
+        .page-title {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 19px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .reading-time {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent-medium);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Typography */
+        .section-heading {
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 120px;
+        }
+
+        .section-heading:first-child {
+            margin-top: 0;
+        }
+
+        .subsection-heading {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .body-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .body-text strong {
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        li {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Glossary Terms */
+        .glossary-term {
+            color: var(--accent-primary);
+            font-weight: 600;
+            cursor: help;
+            border-bottom: 1px dotted var(--accent-primary);
+            position: relative;
+        }
+
+        .glossary-tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            width: 300px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-term:hover .glossary-tooltip {
+            display: block;
+        }
+
+        /* Key Concept Box */
+        .key-concept-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .key-concept-box strong {
+            color: var(--accent-primary);
+            font-size: 1.05em;
+        }
+
+        /* Theorist Cards */
+        .theorist-card {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-primary);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .theorist-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .theorist-years {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Accordion Sections */
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            margin-bottom: 0.75rem;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .accordion-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 20px;
+            font-weight: 300;
+            transition: transform 0.2s ease;
+        }
+
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid #F5F5F5;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 3000px;
+        }
+
+        .correction {
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 15px;
+        }
+
+        /* Connection Items */
+        .connection-item {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .connection-item:last-child {
+            border-bottom: none;
+        }
+
+        .connection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Knowledge Checks */
+        .knowledge-check {
+            background: #FAFAFA;
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .check-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .check-question {
+            font-size: 16px;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-option {
+            margin: 0.75rem 0;
+        }
+
+        .quiz-option label {
+            display: block;
+            padding: 0.85rem 1.15rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+
+        .quiz-option label:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+
+        .quiz-option.correct label {
+            background: #E8F5E9;
+            border-color: var(--accent-primary);
+        }
+
+        .quiz-option.correct .quiz-feedback {
+            display: block;
+            color: var(--accent-primary);
+        }
+
+        .quiz-option.incorrect label {
+            background: #FFEBEE;
+            border-color: #C62828;
+        }
+
+        .quiz-option.incorrect .quiz-feedback {
+            display: block;
+            color: #C62828;
+        }
+
+        /* Resource List */
+        .resource-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .resource-list li {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-type {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .resource-type.book {
+            background: #6A1B9A;
+        }
+
+        .resource-type.article {
+            background: #E65100;
+        }
+
+        /* Expandable Details for Teaching Section */
+        details {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        summary {
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            user-select: none;
+            font-size: 16px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: '+ ';
+            margin-right: 0.5rem;
+            color: var(--accent-primary);
+        }
+
+        details[open] summary::before {
+            content: '− ';
+        }
+
+        details[open] {
+            background: white;
+        }
+
+        .details-content {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .toc-sidebar {
+                display: none;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .sticky-nav {
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 28px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .section-heading {
+                font-size: 22px;
+            }
+
+            .body-text, li {
+                font-size: 16px;
+            }
+
+            .content-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sticky Navigation -->
+<div class="sticky-nav">
+    <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/theories/">Learning Theories</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Social Constructivism</span>
+    </div>
+    <div class="nav-title">Social Constructivism</div>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+    
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc-sidebar">
+        <div class="toc-title">On this page</div>
+        <ul class="toc-list">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#theorists">Key Theorists</a></li>
+            <li><a href="#teaching">How It Informs Teaching</a></li>
+            <li><a href="#importance">Importance for Teachers</a></li>
+            <li><a href="#misconceptions">Common Misconceptions</a></li>
+            <li><a href="#debates">Critical Questions</a></li>
+            <li><a href="#connections">Connections</a></li>
+            <li><a href="#terminology">Key Terminology</a></li>
+            <li><a href="#resources">Find Out More</a></li>
+            <li><a href="#check">Concept Check</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Header Card -->
+        <div class="content-card">
+            <div class="page-header">
+                <h1 class="page-title">Social Constructivism</h1>
+                <p class="page-subtitle">Learning as Socially Mediated Knowledge Construction</p>
+                <div class="reading-time">⏱ 10-12 minute read</div>
+            </div>
+            
+            <h2 class="section-heading" id="overview">Overview: What is Social Constructivism?</h2>
+            
+            <p class="body-text">Social constructivism posits that <strong>knowledge is actively constructed through social interaction and cultural mediation</strong>, not transmitted from teacher to student or discovered in isolation. Higher mental functions—voluntary attention, logical memory, abstract thinking—develop through participation in socially organised activities mediated by language and cultural tools.</p>
+            
+            <div class="key-concept-box">
+                <strong>Central Premise:</strong> What is first experienced between people (interpsychological) becomes individual psychological capacity (intrapsychological). Learning occurs in the <span class="glossary-term">Zone of Proximal Development<span class="glossary-tooltip">The distance between what a learner can do independently and what they can achieve with guidance from a more capable other.</span></span> (ZPD)—the gap between independent and supported performance—where <span class="glossary-term">scaffolding<span class="glossary-tooltip">Temporary support provided by a more knowledgeable other that is gradually withdrawn as the learner gains competence.</span></span> from more knowledgeable others enables tasks beyond current capability.
+            </div>
+            
+            <p class="body-text">This perspective, originating in Lev Vygotsky's work in 1920s-30s Soviet Russia, fundamentally challenges individualist accounts of learning. The unit of analysis is not the isolated learner but the <em>learner-in-social-interaction</em>. Language, dialogue, and cultural tools are not external supports to cognition—they constitute the very process through which thinking develops. Whilst Vygotsky provides the theoretical foundation, scholars such as Bruner, Alexander, and Mercer have extended and applied these principles to contemporary classroom practice.</p>
+            
+            <h3 class="subsection-heading">Why Social Constructivism Matters</h3>
+            
+            <p class="body-text">Social constructivism provides theoretical grounding for understanding:</p>
+            
+            <ul>
+                <li><strong>How language shapes thinking:</strong> thought develops from internalising social dialogue, not merely expressing pre-existing ideas</li>
+                <li><strong>Why quality of talk matters:</strong> structured classroom dialogue (exploratory talk, accountable talk) directly influences cognitive development</li>
+                <li><strong>The function of scaffolding:</strong> temporary support within the ZPD enables current performance whilst building future independent capability</li>
+                <li><strong>Cultural variation in learning:</strong> what counts as knowledge, how it's organised, and pedagogical practices reflect cultural contexts, not universal developmental stages</li>
+            </ul>
+            
+            <h3 class="subsection-heading">A Concrete Example: Learning Historical Analysis</h3>
+            
+            <div class="info-box">
+                <div class="info-box-title">Social Constructivism in Action</div>
+                
+                <p class="body-text"><strong>Task beyond independent capability:</strong> Year 10 students encounter conflicting primary sources about the causes of World War I. Independently, most produce simple narratives ("Country X attacked Country Y") without analysing perspective, bias, or multiple causation.</p>
+                
+                <p class="body-text"><strong>Within the ZPD with scaffolding:</strong> Teacher models sourcing (Who wrote this? When? Why?) through think-aloud with one document. Students work in pairs using a structured protocol: identify author/date/purpose, note claims, compare with other sources. Teacher circulates, asking questions that prompt analysis without providing answers: "What might this author's position suggest about their perspective?" "How does this account differ from the other source?"</p>
+                
+                <p class="body-text"><strong>Dialogic interaction:</strong> Whole-class discussion follows where students present interpretations and challenge each other's reasoning. Teacher orchestrates dialogue, pressing for evidence, asking students to build on others' ideas, making connections explicit. Students experience historical reasoning as collaborative knowledge construction, not individual opinion.</p>
+                
+                <p class="body-text"><strong>Internalisation:</strong> Over subsequent lessons, scaffolding fades. The sourcing protocol becomes internalised self-questioning; peer dialogue transforms into inner speech guiding independent analysis. What began as socially mediated activity becomes individual historical thinking capability.</p>
+                
+                <p class="body-text"><strong>The social constructivist insight:</strong> Historical thinking didn't emerge from individual interaction with sources alone, nor from teacher transmission of analytical frameworks. It developed through guided participation in disciplinary practices, structured dialogue making thinking visible, and progressive internalisation of socially modelled strategies.</p>
+            </div>
+        </div>
+
+        <!-- Theorists Section -->
+        <div class="content-card">
+            <h2 class="section-heading" id="theorists">Key Theorists and Their Contributions</h2>
+            
+            <div class="theorist-card">
+                <div class="theorist-name">Lev Vygotsky (1896-1934)</div>
+                <div class="theorist-years">Soviet psychologist, founder of cultural-historical psychology</div>
+                
+                <p class="body-text"><strong>Core Contributions:</strong></p>
+                <ul>
+                    <li><strong>Zone of Proximal Development (ZPD):</strong> Learning is most effective when targeting tasks a learner cannot yet complete independently but can accomplish with guidance. Teaching below the ZPD is inefficient (consolidating existing skills); teaching above it is frustrating (prerequisites are missing). Dynamic assessment—evaluating what students can do with support—reveals learning potential better than static tests of independent performance.</li>
+                    <li><strong>Mediation and Psychological Tools:</strong> Higher mental functions are mediated by cultural tools, especially language. Just as physical tools (hammers, levers) extend bodily capabilities, psychological tools (language, number systems, mnemonic strategies) transform thinking. We don't think <em>about</em> the world directly; we think <em>through</em> culturally provided tools.</li>
+                    <li><strong>Internalisation:</strong> External social activities become internal psychological processes. Children first experience concepts socially (interpsychological plane), then through guided practice and appropriation, these become individual capabilities (intrapsychological plane). "Every function in the child's cultural development appears twice: first, on the social level, and later, on the individual level."</li>
+                    <li><strong>Inner Speech and Verbal Thinking:</strong> Egocentric speech (young children talking aloud whilst problem-solving) isn't a developmental deficit but transitional between social and inner speech. As it "goes underground," it becomes the psychological tool for planning, organising, and regulating one's own thinking—verbal thought itself.</li>
+                </ul>
+                
+                <p class="body-text">Vygotsky's work, suppressed in Stalin's USSR and unknown in the West until the 1960s, challenges fundamental assumptions about development and learning. Learning doesn't simply follow development (Piaget); learning <em>drives</em> development by pulling children forward through the ZPD.</p>
+            </div>
+            
+            <div class="theorist-card">
+                <div class="theorist-name">Jerome Bruner (1915-2016)</div>
+                <div class="theorist-years">American psychologist who operationalised Vygotskian principles</div>
+                
+                <p class="body-text"><strong>Core Contributions:</strong></p>
+                <ul>
+                    <li><strong>Scaffolding:</strong> Coined by Bruner, Wood, and Ross (1976), this describes the temporary support structures enabling learners to complete tasks within their ZPD. Like construction scaffolding, it's adjustable and removed as independence develops.</li>
+                    <li><strong>Making Thinking Visible:</strong> Expert processes (planning, monitoring, revising) must be externalised through modelling and think-alouds so novices can appropriate these strategies through guided practice.</li>
+                    <li><strong>Language and Representation:</strong> Extended Vygotsky's insights about semiotic mediation, showing how different representational systems (action, image, symbol) shape thinking.</li>
+                </ul>
+                
+                <p class="body-text">Bruner bridged Vygotskian theory and Western classroom practice, making social constructivism pedagogically actionable whilst maintaining theoretical rigour.</p>
+            </div>
+            
+            <div class="theorist-card">
+                <div class="theorist-name">Contemporary Extensions and Applications</div>
+                <div class="theorist-years">Building on Vygotskian foundations</div>
+                
+                <p class="body-text">Whilst Vygotsky provides the theoretical foundation, numerous scholars have extended and applied social constructivist principles to classroom practice:</p>
+                <ul>
+                    <li><strong>Robin Alexander</strong> (dialogic teaching): Developed five principles for productive classroom talk: collective, reciprocal, supportive, cumulative, purposeful. His work translates Vygotskian dialogue into practical teaching repertoires widely used in British education.</li>
+                    <li><strong>Neil Mercer</strong> (exploratory talk): Distinguished between types of classroom talk (disputational, cumulative, exploratory) and demonstrated that teaching students to engage in exploratory talk (where ideas are challenged constructively and reasoning made explicit) improves learning outcomes across curriculum areas.</li>
+                    <li><strong>Barbara Rogoff</strong> (guided participation): Cross-cultural research showing how apprenticeship and scaffolding operate differently across cultural contexts, extending Vygotsky's framework beyond formal schooling to everyday cultural practices.</li>
+                </ul>
+                <p class="body-text">These scholars demonstrate that social constructivism remains a vital, evolving framework, not a static historical theory.</p>
+            </div>
+        </div>
+
+        <!-- Teaching Section -->
+        <div class="content-card">
+            <h2 class="section-heading" id="teaching">How Social Constructivism Informs Teaching and Curriculum</h2>
+            
+            <p class="body-text">Social constructivist principles translate into specific pedagogical approaches:</p>
+            
+            <details>
+                <summary>Scaffolding Within the Zone of Proximal Development</summary>
+                <div class="details-content">
+                    <p class="body-text">Effective scaffolding requires:</p>
+                    <ul>
+                        <li><strong>Diagnosing the ZPD:</strong> Identifying what students can achieve with support versus independently requires ongoing formative assessment, not one-off testing</li>
+                        <li><strong>Structured support:</strong> Providing frameworks (graphic organisers, sentence stems, worked examples) that students can use to complete tasks currently beyond independent capability</li>
+                        <li><strong>Gradual release:</strong> Systematically withdrawing support (from full modelling → guided practice → independent application) as students internalise strategies</li>
+                        <li><strong>Responsive adjustment:</strong> Monitoring whether scaffolding is appropriately pitched—too much creates dependency; too little causes frustration; just right enables current success whilst building future independence</li>
+                    </ul>
+                    <p class="body-text">The goal isn't making tasks easier but enabling students to accomplish challenging tasks with temporary support that's progressively removed.</p>
+                </div>
+            </details>
+            
+            <details>
+                <summary>Orchestrating Productive Classroom Dialogue</summary>
+                <div class="details-content">
+                    <p class="body-text">Since thinking develops through dialogue, the quality of classroom talk matters profoundly:</p>
+                    <ul>
+                        <li><strong>Teach ground rules for exploratory talk:</strong> everyone participates, ideas are challenged respectfully with reasons, the group seeks agreement through reasoning</li>
+                        <li><strong>Use talk moves that extend thinking:</strong> revoicing student contributions, asking for elaboration, pressing for evidence, asking students to compare ideas</li>
+                        <li><strong>Model articulation of thinking:</strong> teachers verbalise planning, monitoring, and problem-solving processes so students can observe and appropriate expert reasoning</li>
+                        <li><strong>Structure accountable talk:</strong> creating norms where students are accountable to the learning community (listening, building on ideas), to accurate knowledge (citing evidence), and to rigorous thinking (using logic)</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary>Making Expert Thinking Visible</summary>
+                <div class="details-content">
+                    <p class="body-text">Novices cannot observe expert cognitive processes unless they're externalised:</p>
+                    <ul>
+                        <li><strong>Think-alouds:</strong> verbalising decision-making whilst problem-solving so students hear expert reasoning</li>
+                        <li><strong>Worked examples with explanation:</strong> demonstrating not just <em>what</em> to do but <em>why</em> each step is necessary</li>
+                        <li><strong>Error analysis:</strong> examining misconceptions or incorrect solutions collaboratively, making reasoning visible</li>
+                        <li><strong>Metacognitive modelling:</strong> demonstrating planning, monitoring progress, evaluating strategies—the regulatory processes typically invisible to novices</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary>Designing Collaborative Learning That Actually Works</summary>
+                <div class="details-content">
+                    <p class="body-text">Not all group work embodies social constructivist principles. Effective collaborative learning requires:</p>
+                    <ul>
+                        <li><strong>Genuine interdependence:</strong> tasks must require collaboration, not permit parallel individual work in proximity</li>
+                        <li><strong>Appropriate expertise distribution:</strong> pairs/groups benefit from slight expertise differences (more capable peers within others' ZPD), not radical disparities</li>
+                        <li><strong>Structured roles:</strong> clear responsibilities preventing domination or free-riding</li>
+                        <li><strong>Accountability for both group and individual learning:</strong> ensuring collaboration produces internalisation, not just collective products</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- Importance Section - NOW ACCORDION -->
+        <div class="content-card">
+            <h2 class="section-heading" id="importance">Importance for Teachers</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Scaffolding Enables Learning; Maintaining It Prevents Learning</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Well-designed scaffolding is paradoxical: it must be robust enough to enable current performance yet temporary enough to not create dependency. Teachers often err in one direction—insufficient support causing frustration, or excessive support preventing internalisation. The test of effective scaffolding isn't whether students succeed <em>with</em> support but whether they progressively succeed <em>without</em> it. This requires planning not just how to scaffold but how and when to fade support, monitoring individual students' developing independence rather than following fixed timelines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Language and Dialogue Are Central to Learning</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Since thinking develops from social speech, the quality of classroom talk directly shapes cognitive development. Teachers must orchestrate dialogue, model articulation of reasoning, and structure peer interaction where students negotiate meaning and build on each other's thinking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Assessment Must Capture Learning Potential, Not Just Current Performance</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Understanding the ZPD means assessing not only what students can do independently but what they can achieve with guidance, which reveals their learning trajectory and informs responsive teaching. Dynamic assessment and formative dialogue become essential.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Misconceptions Section - NOW ACCORDION -->
+        <div class="content-card">
+            <h2 class="section-heading" id="misconceptions">Common Misconceptions</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Social constructivism means all learning must be group work</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Whilst social interaction is where higher mental functions originate, this doesn't mean every activity must be collaborative. Independent practice and consolidation remain essential; the key is that strategies are first encountered socially, then internalised through guided practice.</p>
+                        <p class="correction">✓ Reality: Balance socially mediated introduction of concepts/strategies with individual application. The origin is social; the endpoint is internalised individual capability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Teachers shouldn't directly teach; students should discover everything collaboratively</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">This misunderstands Vygotsky's emphasis on the more knowledgeable other. Scaffolding requires expert guidance, modelling, and structured support, not leaving students to figure things out without direction.</p>
+                        <p class="correction">✓ Reality: Effective social constructivist teaching involves explicit modelling, guided practice with responsive scaffolding, and systematic withdrawal of support, not unguided discovery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Scaffolding is just any kind of help or hint</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Scaffolding has become a buzzword often stripped of precision. It's not generic assistance but theoretically grounded support: temporary, targeting the ZPD, culturally appropriate, and systematically faded as internalisation occurs.</p>
+                        <p class="correction">✓ Reality: Effective scaffolding requires diagnosing current ZPD, providing structured support enabling performance beyond independent level, monitoring internalisation, and deliberately withdrawing support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Social constructivism is the same as Bandura's social learning theory</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Both have "social" in the name, but they're fundamentally different theories. Bandura's social learning theory (observational learning, modelling, self-efficacy) explains how individuals learn by observing others' behaviour and its consequences. Social constructivism explains how knowledge itself is constructed through social interaction and mediated by cultural tools.</p>
+                        <p class="correction">✓ Reality: Bandura focuses on social influences on individual learning; Vygotsky argues that higher mental functions originate in and are constituted by social interaction. The unit of analysis differs: individual learner (Bandura) versus learner-in-social-interaction (Vygotsky).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Debates Section - NOW ACCORDION -->
+        <div class="content-card">
+            <h2 class="section-heading" id="debates">Critical Questions and Points of Debate</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">How do we reliably identify and measure the ZPD in practice?</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">The ZPD is conceptually powerful but methodologically challenging. How do teachers accurately determine what individual students can achieve with support versus independently, particularly when managing 30 diverse learners? Dynamic assessment approaches exist, but they're resource-intensive. What are realistic expectations for ZPD-based differentiation in everyday teaching?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Can all learning be reduced to social origins, or are there cognitive constraints?</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Critics argue social constructivism may overemphasise social mediation at the expense of biological constraints, individual cognitive processes, or learning that occurs without explicit social interaction. Whilst higher mental functions may originate socially, what about perception, basic memory, or aspects of learning that appear to develop without scaffolding? How do we integrate sociocultural and cognitive perspectives?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connections Section - NOW CLEAN DIVIDERS -->
+        <div class="content-card">
+            <h2 class="section-heading" id="connections">Connections to Other Learning Theories</h2>
+            
+            <div class="connection-item">
+                <div class="connection-title">Social Constructivism vs. Piaget's Individual Constructivism</div>
+                <p class="body-text">Both are constructivist—knowledge is actively built—but with crucial differences:</p>
+                <ul>
+                    <li><strong>Piaget:</strong> Child constructs understanding through independent interaction with physical world; social factors are helpful but not essential; development drives learning</li>
+                    <li><strong>Vygotsky:</strong> Knowledge construction is fundamentally social; interaction with more knowledgeable others is constitutive, not supplementary; learning drives development</li>
+                </ul>
+                <p class="body-text">These aren't simply contradictory. Effective teaching likely involves both physical/logical interaction with materials (Piaget) and socially mediated guidance (Vygotsky).</p>
+            </div>
+            
+            <div class="connection-item">
+                <div class="connection-title">Relationship to Cognitive Load Theory</div>
+                <p class="body-text">Social constructivist scaffolding and cognitive load management can be complementary. Well-designed scaffolding manages cognitive load by breaking complex tasks into manageable steps, providing worked examples with fading, and structuring peer interaction to distribute cognitive work. Poorly designed group work, however, can create extraneous load—social constructivism emphasises the <em>quality</em> and <em>structure</em> of social interaction, not just its presence.</p>
+            </div>
+            
+            <div class="connection-item">
+                <div class="connection-title">Links to Metacognition and Self-Regulated Learning</div>
+                <p class="body-text">From a social constructivist view, metacognitive strategies (planning, monitoring, evaluating) are first experienced socially—teachers model self-questioning, students practise collaborative problem-solving—before being internalised as individual regulatory processes. This explains why explicit metacognitive instruction works: it externalises expert thinking so it can be appropriated through guided participation.</p>
+            </div>
+        </div>
+
+        <!-- Terminology Section - NOW ACCORDION -->
+        <div class="content-card">
+            <h2 class="section-heading" id="terminology">Key Terminology</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Zone of Proximal Development (ZPD)</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">The gap between what a learner can achieve independently (actual developmental level) and what they can accomplish with guidance from a more knowledgeable other (potential developmental level). Effective teaching targets this zone.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Scaffolding</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Temporary, adjustable support provided by a teacher or more capable peer that enables learners to complete tasks beyond their independent capacity. Like construction scaffolding, it's gradually removed as competence develops.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Mediation</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">The process by which cultural tools—especially language, symbols, and artefacts—shape and enable human thinking. Higher mental functions are always mediated; we think through culturally provided tools, not directly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Internalisation</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">The process through which external, socially shared activities become internal psychological processes. What is first experienced in social interaction (interpsychological) becomes individual cognitive capacity (intrapsychological).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">More Knowledgeable Other (MKO)</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Anyone with greater understanding or higher ability level than the learner regarding a particular task—teacher, peer, older student, or even technology.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Interpsychological / Intrapsychological</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Vygotsky's distinction between processes occurring between people (inter-) and processes occurring within the individual mind (intra-). Development proceeds from the social/external to the individual/internal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">Inner Speech</div>
+                    <div class="accordion-icon">+</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p class="body-text">Private, self-directed speech that develops from external social dialogue and becomes the psychological tool for organising thinking. This is distinct from external speech—it's abbreviated, predicative, and serves regulatory functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="content-card">
+            <h2 class="section-heading" id="resources">Find Out More</h2>
+            
+            <ul class="resource-list">
+                <li>
+                    <span class="resource-type book">BOOK</span>
+                    <strong>Vygotsky, L.S. (1978). <em>Mind in Society: The Development of Higher Psychological Processes</em>.</strong> Harvard University Press.
+                    <br><em>Essential primary source presenting Vygotsky's core concepts—ZPD, mediation, internalisation. The foundational text.</em>
+                </li>
+                
+                <li>
+                    <span class="resource-type article">ARTICLE</span>
+                    <strong>Wood, D., Bruner, J.S., & Ross, G. (1976). 'The role of tutoring in problem solving', <em>Journal of Child Psychology and Psychiatry</em>, 17(2), 89-100.</strong>
+                    <br><em>Original scaffolding study demonstrating how expert support enables performance within the ZPD.</em>
+                </li>
+                
+                <li>
+                    <span class="resource-type book">BOOK</span>
+                    <strong>Alexander, R. (2020). <em>A Dialogic Teaching Companion</em>.</strong> Routledge.
+                    <br><em>Comprehensive guide to implementing dialogic teaching grounded in Vygotskian principles, with extensive practical examples from British classrooms.</em>
+                </li>
+                
+                <li>
+                    <span class="resource-type book">BOOK</span>
+                    <strong>Mercer, N. & Littleton, K. (2007). <em>Dialogue and the Development of Children's Thinking</em>.</strong> Routledge.
+                    <br><em>Research-based account of how classroom talk shapes learning, with practical guidance for promoting exploratory talk.</em>
+                </li>
+                
+                <li>
+                    <span class="resource-type article">ARTICLE</span>
+                    <strong>Daniels, H. (2016). <em>Vygotsky and Pedagogy</em>.</strong> Routledge.
+                    <br><em>Accessible introduction to Vygotsky's key concepts and their contemporary educational applications.</em>
+                </li>
+                
+                <li>
+                    <span class="resource-type article">ARTICLE</span>
+                    <strong>Van de Pol, J., Volman, M., & Beishuizen, J. (2010). 'Scaffolding in teacher-student interaction: A decade of research', <em>Educational Psychology Review</em>, 22(3), 271-296.</strong>
+                    <br><em>Comprehensive review of scaffolding research with framework for effective practice.</em>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Concept Check Section -->
+        <div class="content-card">
+            <h2 class="section-heading" id="check">Concept Check Questions</h2>
+            
+            <div class="knowledge-check">
+                <div class="check-title">
+                    <div class="check-icon">1</div>
+                    Question 1: ZPD Understanding
+                </div>
+                <p class="check-question">According to Vygotsky's Zone of Proximal Development, the most effective learning occurs when:</p>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q1" value="a">
+                        Students work on tasks they can complete independently without assistance
+                        <div class="quiz-feedback">✗ Tasks within independent capability consolidate existing skills but don't drive development. This is below the ZPD.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="true">
+                    <label>
+                        <input type="radio" name="q1" value="b">
+                        Students work on tasks just beyond current independent capability with appropriate guidance
+                        <div class="quiz-feedback">✓ Correct! This describes the ZPD—where scaffolding from more knowledgeable others enables performance currently impossible independently, driving development.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q1" value="c">
+                        Students work on tasks far beyond their current level to maximise challenge
+                        <div class="quiz-feedback">✗ Tasks too far above current capability fall outside the ZPD. Even with support, students lack necessary prerequisites, causing frustration rather than learning.</div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="knowledge-check">
+                <div class="check-title">
+                    <div class="check-icon">2</div>
+                    Question 2: Internalisation Process
+                </div>
+                <p class="check-question">Vygotsky's concept of internalisation means that:</p>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q2" value="a">
+                        Children memorise information provided by teachers
+                        <div class="quiz-feedback">✗ Internalisation isn't passive memorisation but active transformation of external social processes into psychological tools.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="true">
+                    <label>
+                        <input type="radio" name="q2" value="b">
+                        External social activities become internal psychological processes through guided participation
+                        <div class="quiz-feedback">✓ Correct! "Every function appears twice: first on the social level (interpsychological), later on the individual level (intrapsychological)."</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q2" value="c">
+                        Students develop understanding independently through individual discovery
+                        <div class="quiz-feedback">✗ This describes Piagetian construction. Vygotsky emphasises social origin of higher mental functions.</div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="knowledge-check">
+                <div class="check-title">
+                    <div class="check-icon">3</div>
+                    Question 3: Scaffolding Principles
+                </div>
+                <p class="check-question">Effective scaffolding differs from generic help because it is:</p>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q3" value="a">
+                        Provided whenever students encounter any difficulty
+                        <div class="quiz-feedback">✗ Scaffolding targets the ZPD specifically and involves systematic withdrawal, not constant intervention.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="true">
+                    <label>
+                        <input type="radio" name="q3" value="b">
+                        Temporary, targeting the ZPD, and systematically withdrawn as capability develops
+                        <div class="quiz-feedback">✓ Correct! Scaffolding isn't permanent support but structured, fading assistance enabling progressive independence.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q3" value="c">
+                        Maintained consistently to ensure students always succeed
+                        <div class="quiz-feedback">✗ Maintaining scaffolding prevents internalisation. The goal is building independent capability through gradual withdrawal.</div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="knowledge-check">
+                <div class="check-title">
+                    <div class="check-icon">4</div>
+                    Question 4: Social vs. Individual Constructivism
+                </div>
+                <p class="check-question">The fundamental difference between Vygotsky's social constructivism and Piaget's individual constructivism is:</p>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q4" value="a">
+                        Vygotsky focused on adults; Piaget focused on children
+                        <div class="quiz-feedback">✗ Both studied child development. The difference concerns social versus individual origins of knowledge.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="true">
+                    <label>
+                        <input type="radio" name="q4" value="b">
+                        Vygotsky argued higher mental functions originate socially; Piaget emphasised individual construction through action
+                        <div class="quiz-feedback">✓ Correct! Vygotsky: knowledge construction is fundamentally social. Piaget: individual interaction with physical/logical world. Different units of analysis.</div>
+                    </label>
+                </div>
+                
+                <div class="quiz-option" data-correct="false">
+                    <label>
+                        <input type="radio" name="q4" value="c">
+                        Vygotsky rejected the importance of language; Piaget emphasised it
+                        <div class="quiz-feedback">✗ Opposite is true. Language is central to Vygotsky's theory (mediates thinking); Piaget saw it as reflecting, not constituting, thought.</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+// Progress Bar
+function updateProgressBar() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('progressFill').style.width = scrolled + '%';
+}
+
+window.addEventListener('scroll', updateProgressBar);
+
+// Table of Contents Active State
+const sections = document.querySelectorAll('.section-heading');
+const tocLinks = document.querySelectorAll('.toc-list a');
+
+function updateActiveTocLink() {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveTocLink);
+
+// Smooth Scrolling
+tocLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+            const offset = 120;
+            const targetPosition = targetSection.offsetTop - offset;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Accordion Functionality
+function toggleAccordion(header) {
+    const item = header.parentElement;
+    const wasOpen = item.classList.contains('open');
+    
+    // Close all accordions in the same section
+    const contentCard = item.closest('.content-card');
+    contentCard.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('open');
+    });
+    
+    // Open this one if it wasn't already open
+    if (!wasOpen) {
+        item.classList.add('open');
+    }
+}
+
+// Quiz Functionality
+document.querySelectorAll('.quiz-option input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const quizOption = this.closest('.quiz-option');
+        const allOptions = this.closest('.knowledge-check').querySelectorAll('.quiz-option');
+        
+        // Reset all options
+        allOptions.forEach(opt => {
+            opt.classList.remove('correct', 'incorrect');
+        });
+        
+        // Mark selected option
+        const isCorrect = quizOption.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+            quizOption.classList.add('correct');
+        } else {
+            quizOption.classList.add('incorrect');
+        }
+    });
+});
+
+// Initialize
+updateProgressBar();
+updateActiveTocLink();
+</script>
+
+</body>
+</html>
